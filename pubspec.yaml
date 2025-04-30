@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bloc: ^9.0.0
+  curved_labeled_navigation_bar: ^2.0.6
   dio: ^5.8.0+1
   flutter:
     sdk: flutter
@@ -16,10 +17,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_screenutil: ^5.9.3
-  freezed: ^3.0.6
-  freezed_annotation: ^3.0.0
+  freezed: ^2.5.8
+  freezed_annotation: ^2.4.1
   get_it: ^8.0.3
   json_annotation: ^4.9.0
+  pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.2
 
 dev_dependencies:
@@ -28,8 +30,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^6.9.5
+  retrofit_generator: ^9.1.9
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
 flutter_intl:
   enabled: true
