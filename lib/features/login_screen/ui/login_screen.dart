@@ -7,42 +7,59 @@ import 'package:sadeem_tech_intern/core/themeing/colors.dart';
 import 'package:sadeem_tech_intern/core/themeing/styles.dart';
 import 'package:sadeem_tech_intern/core/widgets/custom_text_button.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_cubit.dart';
+import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_state.dart';
 import 'package:sadeem_tech_intern/features/login_screen/ui/widgets/login_form.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 63.h),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                S.of(context).WelcomeBack,
-                style: AppTextStyle.headTextStyle(),
+        child: BlocConsumer<LoginCubit, LoginState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              success: (userData) {
+                context.pushNamed(Routes.mainScreen, arguments: userData);
+              },
+              failure: (apiError) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(apiError.message ?? "try later")),
+                );
+              },
+            );
+          },
+          builder: (context, state) {
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    S.of(context).WelcomeBack,
+                    style: AppTextStyle.headTextStyle(),
+                  ),
+                  SizedBox(height: 20.h),
+                  LoginForm(),
+                  SizedBox(height: 25.h),
+                  state.maybeWhen(
+                    loading: () => Center(child: CircularProgressIndicator()),
+                    orElse:
+                        () => CustomTextButton(
+                          text: S.of(context).Login,
+                          onPressed: () {
+                            context.read<LoginCubit>().login();
+                          },
+                          backgroundColor: ColorsManager.buttonColor,
+                        ),
+                  ),
+                  SizedBox(height: 40.h),
+                  creatAccountText(),
+                ],
               ),
-              SizedBox(height: 20.h),
-              LoginForm(),
-              SizedBox(height: 25.h),
-              CustomTextButton(
-                text: S.of(context).Login,
-                onPressed: () async{
-                await  context.read<LoginCubit>().login();
-                  // context.pushNamed(Routes.homeScreen);
-                },
-                backgroundColor: ColorsManager.buttonColor,
-              ),
-
-              SizedBox(height: 40.h),
-              creatAccountText(),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

@@ -1,13 +1,13 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:sadeem_tech_intern/core/di/dependancy.dart';
-import 'package:sadeem_tech_intern/core/networking/api_services.dart';
 import 'package:sadeem_tech_intern/core/routing/routes.dart';
+import 'package:sadeem_tech_intern/features/home_screen/controller/cubit/home_cubit.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/home_screen.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_cubit.dart';
-import 'package:sadeem_tech_intern/features/login_screen/data/repos/login_repo.dart';
+import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/login_screen/ui/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadeem_tech_intern/main_navigation_screen.dart';
 
 class AppRouter {
   Route gnerateRoute(RouteSettings settings) {
@@ -16,13 +16,28 @@ class AppRouter {
         return MaterialPageRoute(
           builder:
               (_) => BlocProvider(
-                create: (context) =>  getIt<LoginCubit>(),
+                create: (context) => getIt<LoginCubit>(),
                 child: LoginScreen(),
               ),
         );
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
-
+        final userData = settings.arguments as UserLoginResponseModel;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create:
+                    (context) =>
+                        getIt<HomeCubit>()
+                          ..fetchHomeData()
+                          ..getBestSeller(),
+                child: HomeScreen(userData: userData),
+              ),
+        );
+      case Routes.mainScreen:
+        final userData = settings.arguments as UserLoginResponseModel;
+        return MaterialPageRoute(
+          builder: (_) => MainNavigationScreen(userData: userData),
+        );
       default:
         return MaterialPageRoute(
           builder:

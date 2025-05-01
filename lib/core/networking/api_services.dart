@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:sadeem_tech_intern/core/constants/api_const.dart';
+import 'package:sadeem_tech_intern/features/home_screen/data/models/categories_model.dart';
+import 'package:sadeem_tech_intern/features/home_screen/data/models/products_response_model.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/login_request_body.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 
@@ -14,4 +16,11 @@ abstract class ApiServics {
   Future<UserLoginResponseModel> userLogin(
     @Body() LoginRequestBody loginRequestBody,
   );
+
+  @GET(ApiConstants.categories)
+  Future<List<CategoriesFetchModel>> fetchCategories();
+
+@GET(ApiConstants.bestSeller)
+  Future<ProductsResponseModel> getBestSeller();
+
 }
