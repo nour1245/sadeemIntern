@@ -8,6 +8,7 @@ import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/login_screen/ui/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sadeem_tech_intern/features/onboarding/ui/onboarding_screen.dart';
 import 'package:sadeem_tech_intern/main_navigation_screen.dart';
 import 'package:sadeem_tech_intern/features/product_details/product_details.dart';
 
@@ -31,6 +32,10 @@ class AppRouter {
         final product = settings.arguments as Product;
         return MaterialPageRoute(
           builder: (_) => ProductDetailsScreen(product: product),
+        );
+        case Routes.onboardingScreen:
+        return MaterialPageRoute(
+          builder: (_) => OnboardingScreen(),
         );
       case Routes.categoryProducts:
         final category = settings.arguments as String;

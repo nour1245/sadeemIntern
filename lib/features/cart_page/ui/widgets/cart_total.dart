@@ -15,7 +15,7 @@ class CartTotals extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            "Total: ${cartData.total.round()}",
+            "Total: ${cartData.total.round()}\$",
             style: AppTextStyle.mediumTextStyle().copyWith(fontSize: 16.sp),
           ),
           const Spacer(),

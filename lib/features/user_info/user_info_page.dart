@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadeem_tech_intern/core/themeing/styles.dart';
 import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info_cubit.dart';
 import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info_state.dart';
@@ -10,19 +11,17 @@ class UserInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: BlocBuilder<UserInfoCubit, UserInfoState>(
-          builder: (context, state) {
-            return state.whenOrNull(
-                  success: (userData) => userInfoLoaded(userData),
-                  loading: () => Center(child: CircularProgressIndicator()),
-                  failure: (error) => Center(child: Text(error)),
-                ) ??
-                SizedBox.shrink();
-          },
-        ),
+    return Padding(
+      padding: EdgeInsets.only(top: 45.h, left: 5.w, right: 5.w, bottom: 10.h),
+      child: BlocBuilder<UserInfoCubit, UserInfoState>(
+        builder: (context, state) {
+          return state.whenOrNull(
+                success: (userData) => userInfoLoaded(userData),
+                loading: () => Center(child: CircularProgressIndicator()),
+                failure: (error) => Center(child: Text(error)),
+              ) ??
+              SizedBox.shrink();
+        },
       ),
     );
   }

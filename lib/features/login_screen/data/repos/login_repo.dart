@@ -18,4 +18,14 @@ class LoginRepo {
       return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
+
+  Future<ApiResult<UserLoginResponseModel>> getUserById(int id) async {
+  try {
+    final response = await _apiServics.getUserById(id);
+    return ApiResult.success(response);
+  } catch (e) {
+    return ApiResult.failure(ApiErrorHandler.handle(e));
+  }
+}
+
 }

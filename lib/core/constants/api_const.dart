@@ -10,5 +10,6 @@ class ApiConstants {
   static const getProductInfo = 'products/{id}';
   static const getProductsByCategory = 'products/category/{category}';
   static const searchProduct = 'products/search';
+  static const getUserById = 'users/{id}';
 
 }

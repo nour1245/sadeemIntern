@@ -66,6 +66,8 @@ class CartPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                  
+                
                 ) ??
                 const Center(
                   child: Text('Something went wrong. Please try again.'),

@@ -61,5 +61,6 @@ abstract class ApiServics {
   @DELETE(ApiConstants.getProductInfo)
   Future<void> deleteCartItem(@Path("id") int productId);
 
- 
+  @GET(ApiConstants.getUserById)
+  Future<UserLoginResponseModel> getUserById(@Path('id') int id);
 }

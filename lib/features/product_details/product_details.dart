@@ -26,6 +26,19 @@ class ProductDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProductImage(thumbnailUrl: product.thumbnail),
+            Align(
+              alignment: Alignment.centerRight,
+              child: ElevatedButton.icon(
+                  icon: const Icon(Icons.add_shopping_cart),
+                  label: const Text('Add to Cart'),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 12.h),
+                  ),
+                  onPressed: () {
+                    context.read<CartCubit>().addProduct(product.id, 1);
+                  },
+                ),
+            ),
             ProductTitlePrice(title: product.title, price: product.price),
             ProductDescription(description: product.description),
             ProductMetaInfo(stock: product.stock, category: product.category),
@@ -34,18 +47,7 @@ class ProductDetailsScreen extends StatelessWidget {
             if (product.images.isNotEmpty)
               ProductImageGallery(images: product.images),
           SizedBox(height: 20.h),
-            Center(
-              child: ElevatedButton.icon(
-                icon: const Icon(Icons.add_shopping_cart),
-                label: const Text('Add to Cart'),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 12.h),
-                ),
-                onPressed: () {
-                  context.read<CartCubit>().addProduct(product.id, 1);
-                },
-              ),
-            ),
+            
           ],
         ),
       ),

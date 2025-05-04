@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadeem_tech_intern/core/helpers/splash_decider.dart';
 import 'package:sadeem_tech_intern/core/routing/app_router.dart';
-import 'package:sadeem_tech_intern/core/routing/routes.dart';
-import 'package:sadeem_tech_intern/features/login_screen/ui/login_screen.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
 class MyApp extends StatelessWidget {
@@ -25,9 +24,8 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        initialRoute: Routes.loginScreen,
         onGenerateRoute: appRouter.gnerateRoute,
-        
+        home: SplashDecider(),
       ),
     );
   }

@@ -27,6 +27,18 @@ class CartListView extends StatelessWidget {
           ),
         ),
         CartTotals(cartData: cartData),
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                // Trigger the purchase logic
+              },
+              child: const Text("Buy Now"),
+            ),
+          ),
+        ),
       ],
     );
   }

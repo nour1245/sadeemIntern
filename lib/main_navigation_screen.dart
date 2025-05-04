@@ -70,7 +70,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 child: Icon(Icons.shopping_cart_sharp),
                 label: 'Cart',
               ),
-              CurvedNavigationBarItem(child: Icon(Icons.settings), label: 'User'),
+              CurvedNavigationBarItem(child: Icon(Icons.person_2_outlined), label: 'User'),
             ],
             onTap: (index) {
               setState(() {
