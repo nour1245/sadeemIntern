@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sadeem_tech_intern/category_products.dart';
 import 'package:sadeem_tech_intern/core/di/dependancy.dart';
 import 'package:sadeem_tech_intern/core/routing/routes.dart';
 import 'package:sadeem_tech_intern/features/home_screen/controller/cubit/home_cubit.dart';
+import 'package:sadeem_tech_intern/features/home_screen/data/models/products_response_model.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/home_screen.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_cubit.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/login_screen/ui/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadeem_tech_intern/main_navigation_screen.dart';
+import 'package:sadeem_tech_intern/features/product_details/product_details.dart';
 
 class AppRouter {
   Route gnerateRoute(RouteSettings settings) {
@@ -37,6 +40,16 @@ class AppRouter {
         final userData = settings.arguments as UserLoginResponseModel;
         return MaterialPageRoute(
           builder: (_) => MainNavigationScreen(userData: userData),
+        );
+      case Routes.productDetailsScreen:
+        final product = settings.arguments as Product;
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsScreen(product: product),
+        );
+      case Routes.categoryProducts:
+        final products = settings.arguments as List<Product>;
+        return MaterialPageRoute(
+          builder: (_) => CategoryProductsScreen(productsList: products),
         );
       default:
         return MaterialPageRoute(

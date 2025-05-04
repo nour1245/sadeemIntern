@@ -6,9 +6,12 @@ import 'package:sadeem_tech_intern/core/themeing/styles.dart';
 import 'package:sadeem_tech_intern/features/home_screen/controller/cubit/home_cubit.dart';
 import 'package:sadeem_tech_intern/features/home_screen/controller/cubit/home_state.dart';
 import 'package:sadeem_tech_intern/features/home_screen/data/models/categories_model.dart';
+import 'package:sadeem_tech_intern/features/home_screen/data/models/products_response_model.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/best_seller_gridview.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/home_page_banner.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/home_page_categories_list.dart';
+import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_banner.dart';
+import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_gridItem.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
@@ -24,7 +27,22 @@ class HomeScreen extends StatelessWidget {
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state is Loading) {
-              return Center(child: CircularProgressIndicator());
+              return Column(
+                children: [
+                  ShimmerBanner(),
+                  SizedBox(height: 16.h),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: 4,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.6,
+                    ),
+                    itemBuilder: (context, index) => ShimmerGridItem(),
+                  ),
+                ],
+              );
             } else if (state is Failure) {
               return Center(
                 child: Text(state.apiErrorModel.message ?? "Try later"),
@@ -37,22 +55,11 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   pageBar(userData),
                   SizedBox(height: 20.h),
-                  Text(
-                    S.of(context).Categories,
-                    style: AppTextStyle.semiBoldTextStyle().copyWith(
-                      fontSize: 18,
-                    ),
-                  ),
-                  HomePageCategoriesList(
-                    categoriesList: Hive.box(
-                      'categories',
-                    ).get('list', defaultValue: <CategoriesFetchModel>[]),
-                  ),
+                  ...categoriesSection(context),
                   SizedBox(height: 10.h),
                   homePageBanner(),
                   SizedBox(height: 5.h),
-                  Text("Best Seller", style: AppTextStyle.semiBoldTextStyle()),
-                  BestSellerGridview(bestseller: bestSellers),
+                  ...bestSellerSection(bestSellers),
                 ],
               );
             } else {
@@ -80,5 +87,26 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  categoriesSection(context) {
+    return [
+      Text(
+        S.of(context).Categories,
+        style: AppTextStyle.semiBoldTextStyle().copyWith(fontSize: 18),
+      ),
+      HomePageCategoriesList(
+        categoriesList: Hive.box(
+          'categories',
+        ).get('list', defaultValue: <CategoriesFetchModel>[]),
+      ),
+    ];
+  }
+
+  bestSellerSection(List<Product> bestSellers) {
+    return [
+      Text("Best Seller", style: AppTextStyle.semiBoldTextStyle()),
+      BestSellerGridview(bestseller: bestSellers),
+    ];
   }
 }

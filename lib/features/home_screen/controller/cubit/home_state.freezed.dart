@@ -22,6 +22,9 @@ mixin _$HomeState<T> {
     required TResult Function() loading,
     required TResult Function(T categories, T bestSeller) success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,9 @@ mixin _$HomeState<T> {
     TResult? Function()? loading,
     TResult? Function(T categories, T bestSeller)? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +44,9 @@ mixin _$HomeState<T> {
     TResult Function()? loading,
     TResult Function(T categories, T bestSeller)? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +56,9 @@ mixin _$HomeState<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +67,9 @@ mixin _$HomeState<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +78,9 @@ mixin _$HomeState<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +152,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function() loading,
     required TResult Function(T categories, T bestSeller) success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
   }) {
     return initial();
   }
@@ -145,6 +166,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function()? loading,
     TResult? Function(T categories, T bestSeller)? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
   }) {
     return initial?.call();
   }
@@ -156,6 +180,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function()? loading,
     TResult Function(T categories, T bestSeller)? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -171,6 +198,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
   }) {
     return initial(this);
   }
@@ -182,6 +212,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
   }) {
     return initial?.call(this);
   }
@@ -193,6 +226,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,6 +287,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function() loading,
     required TResult Function(T categories, T bestSeller) success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
   }) {
     return loading();
   }
@@ -262,6 +301,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function()? loading,
     TResult? Function(T categories, T bestSeller)? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
   }) {
     return loading?.call();
   }
@@ -273,6 +315,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function()? loading,
     TResult Function(T categories, T bestSeller)? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -288,6 +333,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
   }) {
     return loading(this);
   }
@@ -299,6 +347,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
   }) {
     return loading?.call(this);
   }
@@ -310,6 +361,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -408,6 +462,9 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function() loading,
     required TResult Function(T categories, T bestSeller) success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
   }) {
     return success(categories, bestSeller);
   }
@@ -419,6 +476,9 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function()? loading,
     TResult? Function(T categories, T bestSeller)? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
   }) {
     return success?.call(categories, bestSeller);
   }
@@ -430,6 +490,9 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function()? loading,
     TResult Function(T categories, T bestSeller)? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -445,6 +508,9 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
   }) {
     return success(this);
   }
@@ -456,6 +522,9 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
   }) {
     return success?.call(this);
   }
@@ -467,6 +536,9 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -563,6 +635,9 @@ class _$FailureImpl<T> implements Failure<T> {
     required TResult Function() loading,
     required TResult Function(T categories, T bestSeller) success,
     required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
   }) {
     return failure(apiErrorModel);
   }
@@ -574,6 +649,9 @@ class _$FailureImpl<T> implements Failure<T> {
     TResult? Function()? loading,
     TResult? Function(T categories, T bestSeller)? success,
     TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
   }) {
     return failure?.call(apiErrorModel);
   }
@@ -585,6 +663,9 @@ class _$FailureImpl<T> implements Failure<T> {
     TResult Function()? loading,
     TResult Function(T categories, T bestSeller)? success,
     TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -600,6 +681,9 @@ class _$FailureImpl<T> implements Failure<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
   }) {
     return failure(this);
   }
@@ -611,6 +695,9 @@ class _$FailureImpl<T> implements Failure<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
   }) {
     return failure?.call(this);
   }
@@ -622,6 +709,9 @@ class _$FailureImpl<T> implements Failure<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -640,5 +730,486 @@ abstract class Failure<T> implements HomeState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ProductLoadingImplCopyWith<T, $Res> {
+  factory _$$ProductLoadingImplCopyWith(_$ProductLoadingImpl<T> value,
+          $Res Function(_$ProductLoadingImpl<T>) then) =
+      __$$ProductLoadingImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$ProductLoadingImplCopyWithImpl<T, $Res>
+    extends _$HomeStateCopyWithImpl<T, $Res, _$ProductLoadingImpl<T>>
+    implements _$$ProductLoadingImplCopyWith<T, $Res> {
+  __$$ProductLoadingImplCopyWithImpl(_$ProductLoadingImpl<T> _value,
+      $Res Function(_$ProductLoadingImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ProductLoadingImpl<T> implements ProductLoading<T> {
+  const _$ProductLoadingImpl();
+
+  @override
+  String toString() {
+    return 'HomeState<$T>.productLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ProductLoadingImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(T categories, T bestSeller) success,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
+  }) {
+    return productLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(T categories, T bestSeller)? success,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
+  }) {
+    return productLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(T categories, T bestSeller)? success,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
+    required TResult orElse(),
+  }) {
+    if (productLoading != null) {
+      return productLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
+  }) {
+    return productLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
+  }) {
+    return productLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
+    required TResult orElse(),
+  }) {
+    if (productLoading != null) {
+      return productLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ProductLoading<T> implements HomeState<T> {
+  const factory ProductLoading() = _$ProductLoadingImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$ProductSuccessImplCopyWith<T, $Res> {
+  factory _$$ProductSuccessImplCopyWith(_$ProductSuccessImpl<T> value,
+          $Res Function(_$ProductSuccessImpl<T>) then) =
+      __$$ProductSuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T productInfo});
+}
+
+/// @nodoc
+class __$$ProductSuccessImplCopyWithImpl<T, $Res>
+    extends _$HomeStateCopyWithImpl<T, $Res, _$ProductSuccessImpl<T>>
+    implements _$$ProductSuccessImplCopyWith<T, $Res> {
+  __$$ProductSuccessImplCopyWithImpl(_$ProductSuccessImpl<T> _value,
+      $Res Function(_$ProductSuccessImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productInfo = freezed,
+  }) {
+    return _then(_$ProductSuccessImpl<T>(
+      freezed == productInfo
+          ? _value.productInfo
+          : productInfo // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ProductSuccessImpl<T> implements ProductSuccess<T> {
+  const _$ProductSuccessImpl(this.productInfo);
+
+  @override
+  final T productInfo;
+
+  @override
+  String toString() {
+    return 'HomeState<$T>.productSuccess(productInfo: $productInfo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProductSuccessImpl<T> &&
+            const DeepCollectionEquality()
+                .equals(other.productInfo, productInfo));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(productInfo));
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProductSuccessImplCopyWith<T, _$ProductSuccessImpl<T>> get copyWith =>
+      __$$ProductSuccessImplCopyWithImpl<T, _$ProductSuccessImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(T categories, T bestSeller) success,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
+  }) {
+    return productSuccess(productInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(T categories, T bestSeller)? success,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
+  }) {
+    return productSuccess?.call(productInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(T categories, T bestSeller)? success,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
+    required TResult orElse(),
+  }) {
+    if (productSuccess != null) {
+      return productSuccess(productInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
+  }) {
+    return productSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
+  }) {
+    return productSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
+    required TResult orElse(),
+  }) {
+    if (productSuccess != null) {
+      return productSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ProductSuccess<T> implements HomeState<T> {
+  const factory ProductSuccess(final T productInfo) = _$ProductSuccessImpl<T>;
+
+  T get productInfo;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProductSuccessImplCopyWith<T, _$ProductSuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$productFailureImplCopyWith<T, $Res> {
+  factory _$$productFailureImplCopyWith(_$productFailureImpl<T> value,
+          $Res Function(_$productFailureImpl<T>) then) =
+      __$$productFailureImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$productFailureImplCopyWithImpl<T, $Res>
+    extends _$HomeStateCopyWithImpl<T, $Res, _$productFailureImpl<T>>
+    implements _$$productFailureImplCopyWith<T, $Res> {
+  __$$productFailureImplCopyWithImpl(_$productFailureImpl<T> _value,
+      $Res Function(_$productFailureImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$productFailureImpl<T>(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$productFailureImpl<T> implements productFailure<T> {
+  const _$productFailureImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'HomeState<$T>.productFailure(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$productFailureImpl<T> &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$productFailureImplCopyWith<T, _$productFailureImpl<T>> get copyWith =>
+      __$$productFailureImplCopyWithImpl<T, _$productFailureImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(T categories, T bestSeller) success,
+    required TResult Function(ApiErrorModel apiErrorModel) failure,
+    required TResult Function() productLoading,
+    required TResult Function(T productInfo) productSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) productFailure,
+  }) {
+    return productFailure(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(T categories, T bestSeller)? success,
+    TResult? Function(ApiErrorModel apiErrorModel)? failure,
+    TResult? Function()? productLoading,
+    TResult? Function(T productInfo)? productSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? productFailure,
+  }) {
+    return productFailure?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(T categories, T bestSeller)? success,
+    TResult Function(ApiErrorModel apiErrorModel)? failure,
+    TResult Function()? productLoading,
+    TResult Function(T productInfo)? productSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? productFailure,
+    required TResult orElse(),
+  }) {
+    if (productFailure != null) {
+      return productFailure(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Failure<T> value) failure,
+    required TResult Function(ProductLoading<T> value) productLoading,
+    required TResult Function(ProductSuccess<T> value) productSuccess,
+    required TResult Function(productFailure<T> value) productFailure,
+  }) {
+    return productFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Failure<T> value)? failure,
+    TResult? Function(ProductLoading<T> value)? productLoading,
+    TResult? Function(ProductSuccess<T> value)? productSuccess,
+    TResult? Function(productFailure<T> value)? productFailure,
+  }) {
+    return productFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(Failure<T> value)? failure,
+    TResult Function(ProductLoading<T> value)? productLoading,
+    TResult Function(ProductSuccess<T> value)? productSuccess,
+    TResult Function(productFailure<T> value)? productFailure,
+    required TResult orElse(),
+  }) {
+    if (productFailure != null) {
+      return productFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class productFailure<T> implements HomeState<T> {
+  const factory productFailure(final ApiErrorModel apiErrorModel) =
+      _$productFailureImpl<T>;
+
+  ApiErrorModel get apiErrorModel;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$productFailureImplCopyWith<T, _$productFailureImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
