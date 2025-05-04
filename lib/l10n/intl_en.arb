@@ -1,3 +1,10 @@
 {
-    
+    "WelcomeBack":"Welcome\nBack!",
+    "ForgotPassword":"Forgot Password?",
+    "UserName":"Username",
+    "Password":"Password",
+    "Login":"Login",
+    "CreateAnAccount":"Create An Account",
+    "SignUp":"Sign Up",
+    "Categories":"Categories"
 }
