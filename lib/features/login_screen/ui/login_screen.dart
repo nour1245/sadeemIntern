@@ -46,12 +46,14 @@ class LoginScreen extends StatelessWidget {
                   state.maybeWhen(
                     loading: () => Center(child: CircularProgressIndicator()),
                     orElse:
-                        () => CustomTextButton(
-                          text: S.of(context).Login,
-                          onPressed: () {
-                            context.read<LoginCubit>().login();
-                          },
-                          backgroundColor: ColorsManager.buttonColor,
+                        () => Center(
+                          child: CustomTextButton(
+                            text: S.of(context).Login,
+                            onPressed: () {
+                              context.read<LoginCubit>().login();
+                            },
+                            backgroundColor: ColorsManager.buttonColor,
+                          ),
                         ),
                   ),
                   SizedBox(height: 40.h),

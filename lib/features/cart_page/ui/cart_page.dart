@@ -5,7 +5,7 @@ import 'package:sadeem_tech_intern/features/cart_page/controller/cubit/cart_stat
 import 'package:sadeem_tech_intern/features/cart_page/data/models/cart_response_model.dart';
 import 'package:sadeem_tech_intern/features/cart_page/ui/widgets/cart_empty_view.dart';
 import 'package:sadeem_tech_intern/features/cart_page/ui/widgets/cart_list_view.dart';
-import 'package:sadeem_tech_intern/features/cart_page/ui/widgets/shimmer_cartItem.dart';
+import 'package:sadeem_tech_intern/features/cart_page/ui/widgets/shimmer_cart_item.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});

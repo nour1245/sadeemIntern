@@ -121,7 +121,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _navigateToLogin,
-                    child: const Text("Login"),
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 14.h),
                       backgroundColor: ColorsManager.activeColor,
@@ -129,6 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                     ),
+                    child: const Text("Login"),
                   ),
                 ),
               ),

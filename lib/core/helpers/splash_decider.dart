@@ -36,7 +36,6 @@ class SplashDecider extends StatelessWidget {
       return userResult.when(
         success: (user) => MainNavigationScreen(userData: user),
         failure: (_) {
-          // Token might be expired; clear storage and return to login
           SecureStorageService.clear();
           return BlocProvider(
             create: (context) => getIt<LoginCubit>(),
@@ -45,12 +44,10 @@ class SplashDecider extends StatelessWidget {
         },
       );
     } catch (e) {
-      // Handle unexpected errors (e.g., network issues)
       return BlocProvider(
         create: (context) => getIt<LoginCubit>(),
         child: const LoginScreen(),
       );
-      ;
     }
   }
 

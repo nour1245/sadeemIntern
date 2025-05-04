@@ -22,14 +22,16 @@ class SearchGrid extends StatelessWidget {
       items: products,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       physics: const ScrollPhysics(),
-      itemBuilder: (context, product) => ProductGridItem(
-        product: product,
-        onWishlistTap: () => print(product.id),
-        onTap: (_) => context.pushNamed(
-          Routes.productDetailsScreen,
-          arguments: product,
-        ),
-      ),
+      itemBuilder:
+          (context, product) => ProductGridItem(
+            product: product,
+            onWishlistTap: () {},
+            onTap:
+                (_) => context.pushNamed(
+                  Routes.productDetailsScreen,
+                  arguments: product,
+                ),
+          ),
     );
   }
 }

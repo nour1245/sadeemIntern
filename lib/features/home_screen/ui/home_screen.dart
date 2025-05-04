@@ -11,7 +11,7 @@ import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/best_seller_g
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/home_page_banner.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/home_page_categories_list.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_banner.dart';
-import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_gridItem.dart';
+import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_grid_item.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
