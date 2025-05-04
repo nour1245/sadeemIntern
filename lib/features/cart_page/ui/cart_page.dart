@@ -12,30 +12,20 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CartCubit, CartState>(
-      listenWhen: (previous, current) => current is Success,
-      listener: (context, state) {
-        if (state is Success) {
-          showDialog(
-            context: context,
-            builder:
-                (context) => AlertDialog(
-                  title: const Text('Success'),
-                  content: const Text(
-                    'Request was successful, but this is a dummy API so there is no update in the database.',
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('OK'),
-                    ),
-                  ],
-                ),
-          );
-        }
-      },
-      child: Scaffold(
-        body: BlocBuilder<CartCubit, CartState>(
+    return Scaffold(
+      body: BlocListener<CartCubit, CartState>(
+        listener: (context, state) {
+          if (state is Success) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Request was successful!'),
+                backgroundColor: Colors.green,
+                duration: Duration(seconds: 2),
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<CartCubit, CartState>(
           builder: (context, state) {
             return state.whenOrNull(
                   userCartloading:
@@ -48,9 +38,7 @@ class CartPage extends StatelessWidget {
                   userCartsuccess: (data) {
                     final List<CartProduct> products =
                         data.carts.isNotEmpty ? data.carts[0].products : [];
-
                     if (products.isEmpty) return const CartEmptyView();
-
                     return CartListView(
                       products: products,
                       cartData: data.carts[0],
@@ -66,12 +54,9 @@ class CartPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                  
-                
+                      
                 ) ??
-                const Center(
-                  child: Text('Something went wrong. Please try again.'),
-                );
+                const Center(child: Text('Something went wrong.'));
           },
         ),
       ),

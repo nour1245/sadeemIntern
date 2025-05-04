@@ -42,7 +42,6 @@ class SplashDecider extends StatelessWidget {
             create: (context) => getIt<LoginCubit>(),
             child: const LoginScreen(),
           );
-          ;
         },
       );
     } catch (e) {
