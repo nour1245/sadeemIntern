@@ -10,6 +10,7 @@ class GenericGridView<T> extends StatelessWidget {
   final double mainAxisSpacing;
   final EdgeInsetsGeometry? padding;
   final ScrollPhysics? physics;
+  final ScrollController? controller;
 
   const GenericGridView({
     super.key,
@@ -21,11 +22,13 @@ class GenericGridView<T> extends StatelessWidget {
     this.mainAxisSpacing = 8,
     this.padding,
     this.physics,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      controller: controller,
       padding: padding,
       physics: physics ?? const NeverScrollableScrollPhysics(),
       shrinkWrap: true,

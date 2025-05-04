@@ -31,6 +31,27 @@ class CartRepo {
     }
   }
 
+  Future<ApiResult<void>> updateCartItem(
+    int productId,
+    Map<String, dynamic> updatedData,
+  ) async {
+    try {
+      await _apiServics.updateCartItem(productId, updatedData);
+      return const ApiResult.success(null);
+    } catch (e) {
+      return ApiResult.failure(ApiErrorHandler.handle(e));
+    }
+  }
+
+  Future<ApiResult<void>> deleteCartItem(int productId) async {
+    try {
+      await _apiServics.deleteCartItem(productId);
+      return const ApiResult.success(null);
+    } catch (e) {
+      return ApiResult.failure(ApiErrorHandler.handle(e));
+    }
+  }
+
   Future<ApiResult<UserCartResponse>> getUserCart(userId) async {
     try {
       final response = await _apiServics.getUserCart(userId);

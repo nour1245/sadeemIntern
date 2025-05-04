@@ -18,6 +18,13 @@ class BestSellerGridview extends StatelessWidget {
         items: bestseller,
         itemBuilder: (context, product) {
           return ProductGridItem(
+            onWishlistTap: () => AlertDialog(
+              actions: [
+                Dialog(
+                  child: Text('added Successfuly'),
+                )
+              ],
+            ),
             product: product,
             onTap: (product) => _handleProductTap(context, product.id),
           );

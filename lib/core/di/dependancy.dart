@@ -11,6 +11,8 @@ import 'package:sadeem_tech_intern/features/home_screen/data/repos/get_product_i
 import 'package:sadeem_tech_intern/features/home_screen/data/repos/get_products_by_category.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_cubit.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/repos/login_repo.dart';
+import 'package:sadeem_tech_intern/features/search_page/controller/cubit/search_product_cubit.dart';
+import 'package:sadeem_tech_intern/features/search_page/data/repos/search_product_repo.dart';
 import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info_cubit.dart';
 import 'package:sadeem_tech_intern/features/user_info/data/repos/user_info_repo.dart';
 
@@ -46,4 +48,10 @@ Future<void> setupGetIt() async {
   //
   getIt.registerLazySingleton<UserInfoRepo>(() => UserInfoRepo(getIt()));
   getIt.registerFactory<UserInfoCubit>(() => UserInfoCubit(getIt()));
+
+  //
+  getIt.registerLazySingleton<SearchProductRepo>(
+    () => SearchProductRepo(getIt()),
+  );
+  getIt.registerFactory<SearchProductCubit>(() => SearchProductCubit(getIt()));
 }

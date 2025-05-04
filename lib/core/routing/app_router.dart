@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sadeem_tech_intern/category_products.dart';
+import 'package:sadeem_tech_intern/category_products_screen.dart';
 import 'package:sadeem_tech_intern/core/di/dependancy.dart';
 import 'package:sadeem_tech_intern/core/routing/routes.dart';
 import 'package:sadeem_tech_intern/features/home_screen/controller/cubit/home_cubit.dart';
 import 'package:sadeem_tech_intern/features/home_screen/data/models/products_response_model.dart';
-import 'package:sadeem_tech_intern/features/home_screen/ui/home_screen.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_cubit.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/login_screen/ui/login_screen.dart';
@@ -23,19 +22,6 @@ class AppRouter {
                 child: LoginScreen(),
               ),
         );
-      case Routes.homeScreen:
-        final userData = settings.arguments as UserLoginResponseModel;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider(
-                create:
-                    (context) =>
-                        getIt<HomeCubit>()
-                          ..fetchHomeData()
-                          ..getBestSeller(),
-                child: HomeScreen(userData: userData),
-              ),
-        );
       case Routes.mainScreen:
         final userData = settings.arguments as UserLoginResponseModel;
         return MaterialPageRoute(
@@ -47,9 +33,13 @@ class AppRouter {
           builder: (_) => ProductDetailsScreen(product: product),
         );
       case Routes.categoryProducts:
-        final products = settings.arguments as List<Product>;
+        final category = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (_) => CategoryProductsScreen(productsList: products),
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<HomeCubit>(),
+                child: CategoryProductsScreen(category: category),
+              ),
         );
       default:
         return MaterialPageRoute(

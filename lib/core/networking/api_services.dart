@@ -39,5 +39,27 @@ abstract class ApiServics {
   Future<Product> getProductById(@Path("id") int id);
 
   @GET(ApiConstants.getProductsByCategory)
-  Future<ProductsResponseModel> getProductsByCategory(@Path("category") String category);
+  Future<ProductsResponseModel> getProductsByCategory(
+    @Path("category") String category,
+    @Query("limit") int limit,
+    @Query("skip") int skip,
+  );
+
+  @GET(ApiConstants.searchProduct)
+  Future<ProductsResponseModel> searchProduct(
+    @Query("q") String productName,
+    @Query("limit") int limit,
+    @Query("skip") int skip,
+  );
+
+  @PUT(ApiConstants.getProductInfo)
+  Future<void> updateCartItem(
+    @Path("id") int productId,
+    @Body() Map<String, dynamic> data,
+  );
+
+  @DELETE(ApiConstants.getProductInfo)
+  Future<void> deleteCartItem(@Path("id") int productId);
+
+ 
 }

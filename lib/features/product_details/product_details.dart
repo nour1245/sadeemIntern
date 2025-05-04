@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadeem_tech_intern/features/cart_page/controller/cubit/cart_cubit.dart';
 import 'package:sadeem_tech_intern/features/home_screen/data/models/products_response_model.dart';
 import 'widgets/product_image.dart';
 import 'widgets/product_title_price.dart';
@@ -31,6 +33,19 @@ class ProductDetailsScreen extends StatelessWidget {
             ProductAdditionalInfo(product: product),
             if (product.images.isNotEmpty)
               ProductImageGallery(images: product.images),
+          SizedBox(height: 20.h),
+            Center(
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.add_shopping_cart),
+                label: const Text('Add to Cart'),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 12.h),
+                ),
+                onPressed: () {
+                  context.read<CartCubit>().addProduct(product.id, 1);
+                },
+              ),
+            ),
           ],
         ),
       ),

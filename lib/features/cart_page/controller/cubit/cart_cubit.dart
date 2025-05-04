@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadeem_tech_intern/core/helpers/secure_storage_service.dart';
-import 'package:sadeem_tech_intern/core/networking/api_error_handler.dart';
 import 'package:sadeem_tech_intern/features/cart_page/controller/cubit/cart_state.dart';
 import 'package:sadeem_tech_intern/features/cart_page/data/repos/cart_repo.dart';
 
@@ -16,6 +15,27 @@ class CartCubit extends Cubit<CartState> {
     } catch (e) {
       emit(CartState.error(e.toString()));
     }
+  }
+
+  Future<void> updateCartItem(
+    int productId,
+    Map<String, dynamic> updatedData,
+  ) async {
+    emit(CartState.loading());
+    final result = await _cartRepo.updateCartItem(productId, updatedData);
+    result.when(
+      success: (_) => emit(CartState.success()),
+      failure: (error) => emit(CartState.error(error.message!)),
+    );
+  }
+
+  Future<void> deleteCartItem(int productId) async {
+    emit(CartState.loading());
+    final result = await _cartRepo.deleteCartItem(productId);
+    result.when(
+      success: (_) => emit(CartState.success()),
+      failure: (error) => emit(CartState.error(error.message!)),
+    );
   }
 
   Future<void> getUserCart() async {

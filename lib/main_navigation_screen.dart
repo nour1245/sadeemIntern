@@ -9,10 +9,10 @@ import 'package:sadeem_tech_intern/features/cart_page/controller/cubit/cart_cubi
 import 'package:sadeem_tech_intern/features/home_screen/controller/cubit/home_cubit.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/home_screen.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
+import 'package:sadeem_tech_intern/features/search_page/controller/cubit/search_product_cubit.dart';
 import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info_cubit.dart';
-import 'package:sadeem_tech_intern/features/user_info/data/models/user_info_model.dart';
 import 'package:sadeem_tech_intern/features/user_info/user_info_page.dart';
-import 'package:sadeem_tech_intern/features/wishlist_page/wishlist_page.dart';
+import 'package:sadeem_tech_intern/features/search_page/search_page.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   final UserLoginResponseModel userData;
@@ -35,7 +35,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         create: (_) => getIt<HomeCubit>()..fetchHomeData(),
         child: HomeScreen(userData: widget.userData),
       ),
-      WishlistPage(),
+      BlocProvider(
+        create: (context) => getIt<SearchProductCubit>(),
+        child: SearchPage(),
+      ),
       BlocProvider(
         create: (_) => getIt<CartCubit>()..getUserCart(),
         child: const CartPage(),
@@ -44,46 +47,37 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         create: (context) => getIt<UserInfoCubit>()..getUserInfo(),
         child: UserInfoPage(),
       ),
-      // BlocProvider(
-      //   create: (_) => WishlistCubit()..loadWishlist(),
-      //   child: const WishlistPage(),
-      // ),
-
-      // BlocProvider(
-      //   create: (_) => SettingsCubit(),
-      //   child: const SettingsPage(),
-      // ),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: _pages[_selectedIndex],
-        bottomNavigationBar: CurvedNavigationBar(
-          index: _selectedIndex,
-          backgroundColor: ColorsManager.activeColor,
-          items: [
-            CurvedNavigationBarItem(
-              child: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            CurvedNavigationBarItem(
-              child: Icon(Icons.heart_broken),
-              label: 'Wishlist',
-            ),
-            CurvedNavigationBarItem(
-              child: Icon(Icons.shopping_cart_sharp),
-              label: 'Cart',
-            ),
-            CurvedNavigationBarItem(child: Icon(Icons.settings), label: 'User'),
-          ],
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
+    return PopScope (
+      canPop: false,
+      child: SafeArea(
+        child: Scaffold(
+          body: _pages[_selectedIndex],
+          bottomNavigationBar: CurvedNavigationBar(
+            index: _selectedIndex,
+            backgroundColor: ColorsManager.activeColor,
+            items: [
+              CurvedNavigationBarItem(
+                child: Icon(Icons.home_outlined),
+                label: 'Home',
+              ),
+              CurvedNavigationBarItem(child: Icon(Icons.search), label: 'Search'),
+              CurvedNavigationBarItem(
+                child: Icon(Icons.shopping_cart_sharp),
+                label: 'Cart',
+              ),
+              CurvedNavigationBarItem(child: Icon(Icons.settings), label: 'User'),
+            ],
+            onTap: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+          ),
         ),
       ),
     );

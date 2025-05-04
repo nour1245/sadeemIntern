@@ -61,14 +61,19 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  Future<List<Product>> getProductsByCategory(String category) async {
+  Future<List<Product>> getProductsByCategory({
+    required String category,
+    int limit = 10,
+    int skip = 0,
+  }) async {
     final result = await _getProductsByCategoryRepo.getProductsByCategory(
       category,
+      limit,
+      skip,
     );
+
     return result.when(
-      success: (data) {
-        return data.products;
-      },
+      success: (data) => data.products,
       failure: (apiErrorModel) {
         throw Exception(
           'Failed to fetch products by category: ${apiErrorModel.message ?? 'Unknown error'}',

@@ -3,18 +3,18 @@ import 'package:sadeem_tech_intern/core/networking/api_result.dart';
 import 'package:sadeem_tech_intern/core/networking/api_services.dart';
 import 'package:sadeem_tech_intern/features/home_screen/data/models/products_response_model.dart';
 
-class GetProductsByCategoryRepo {
+class SearchProductRepo {
   final ApiServics _apiServics;
-  GetProductsByCategoryRepo(this._apiServics);
+  SearchProductRepo(this._apiServics);
 
-  Future<ApiResult<ProductsResponseModel>> getProductsByCategory(
-    String category,
+  Future<ApiResult<ProductsResponseModel>> searchProduct(
+    String productName,
     int limit,
     int skip,
   ) async {
     try {
-      final response = await _apiServics.getProductsByCategory(
-        category,
+      final response = await _apiServics.searchProduct(
+        productName,
         limit,
         skip,
       );

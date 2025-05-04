@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
           listener: (context, state) {
             state.whenOrNull(
               success: (userData) {
-                context.pushNamed(Routes.mainScreen, arguments: userData);
+                context.pushReplacementNamed(Routes.mainScreen, arguments: userData);
               },
               failure: (apiError) {
                 ScaffoldMessenger.of(context).showSnackBar(

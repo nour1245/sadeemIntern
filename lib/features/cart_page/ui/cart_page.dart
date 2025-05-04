@@ -12,40 +12,66 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<CartCubit, CartState>(
-        builder: (context, state) {
-          return state.whenOrNull(
-                userCartloading:
-                    () => ListView.separated(
-                      padding: const EdgeInsets.all(12),
-                      itemCount: 5,
-                      separatorBuilder: (_, __) => const SizedBox(height: 10),
-                      itemBuilder: (_, __) => const ShimmerCartItem(),
+    return BlocListener<CartCubit, CartState>(
+      listenWhen: (previous, current) => current is Success,
+      listener: (context, state) {
+        if (state is Success) {
+          showDialog(
+            context: context,
+            builder:
+                (context) => AlertDialog(
+                  title: const Text('Success'),
+                  content: const Text(
+                    'Request was successful, but this is a dummy API so there is no update in the database.',
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text('OK'),
                     ),
-                userCartsuccess: (data) {
-                  final List<CartProduct> products =
-                      data.carts.isNotEmpty ? data.carts[0].products : [];
-
-                  if (products.isEmpty) return const CartEmptyView();
-
-                  return CartListView(
-                    products: products,
-                    cartData: data.carts[0],
-                  );
-                },
-                error:
-                    (message) => Center(
-                      child: Text(
-                        message,
-                        style: const TextStyle(color: Colors.red, fontSize: 16),
+                  ],
+                ),
+          );
+        }
+      },
+      child: Scaffold(
+        body: BlocBuilder<CartCubit, CartState>(
+          builder: (context, state) {
+            return state.whenOrNull(
+                  userCartloading:
+                      () => ListView.separated(
+                        padding: const EdgeInsets.all(12),
+                        itemCount: 5,
+                        separatorBuilder: (_, __) => const SizedBox(height: 10),
+                        itemBuilder: (_, __) => const ShimmerCartItem(),
                       ),
-                    ),
-              ) ??
-              const Center(
-                child: Text('Something went wrong. Please try again.'),
-              );
-        },
+                  userCartsuccess: (data) {
+                    final List<CartProduct> products =
+                        data.carts.isNotEmpty ? data.carts[0].products : [];
+
+                    if (products.isEmpty) return const CartEmptyView();
+
+                    return CartListView(
+                      products: products,
+                      cartData: data.carts[0],
+                    );
+                  },
+                  error:
+                      (message) => Center(
+                        child: Text(
+                          message,
+                          style: const TextStyle(
+                            color: Colors.red,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                ) ??
+                const Center(
+                  child: Text('Something went wrong. Please try again.'),
+                );
+          },
+        ),
       ),
     );
   }
