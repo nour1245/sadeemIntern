@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadeem_tech_intern/core/helpers/extensions.dart';
+import 'package:sadeem_tech_intern/core/helpers/secure_storage_service.dart';
+import 'package:sadeem_tech_intern/core/routing/routes.dart';
 import 'package:sadeem_tech_intern/core/themeing/styles.dart';
 import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info_cubit.dart';
 import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info_state.dart';
@@ -16,7 +19,7 @@ class UserInfoPage extends StatelessWidget {
       child: BlocBuilder<UserInfoCubit, UserInfoState>(
         builder: (context, state) {
           return state.whenOrNull(
-                success: (userData) => userInfoLoaded(userData),
+                success: (userData) => userInfoLoaded(context,userData),
                 loading: () => Center(child: CircularProgressIndicator()),
                 failure: (error) => Center(child: Text(error)),
               ) ??
@@ -26,7 +29,7 @@ class UserInfoPage extends StatelessWidget {
     );
   }
 
-  Column userInfoLoaded(UserInfo user) {
+  Column userInfoLoaded(BuildContext context,UserInfo user) {
     return Column(
       children: [
         CircleAvatar(radius: 50, backgroundImage: NetworkImage(user.image)),
@@ -46,6 +49,25 @@ class UserInfoPage extends StatelessWidget {
                 user.address.state +
                 user.address.country,
           ),
+        ),
+        SizedBox(height: 30.h),
+        ElevatedButton.icon(
+          icon: Icon(Icons.logout, color: Colors.white),
+          label: Text(
+            'Logout',
+            style: TextStyle(color: Colors.white),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.red,
+            padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 12.h),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+          ),
+          onPressed: () async {
+            await SecureStorageService.clear();
+            context.pushReplacementNamed(Routes.loginScreen);
+          },
         ),
       ],
     );

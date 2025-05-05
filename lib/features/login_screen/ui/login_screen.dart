@@ -8,6 +8,7 @@ import 'package:sadeem_tech_intern/core/themeing/styles.dart';
 import 'package:sadeem_tech_intern/core/widgets/custom_text_button.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_cubit.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_state.dart';
+import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/login_screen/ui/widgets/login_form.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
@@ -22,7 +23,10 @@ class LoginScreen extends StatelessWidget {
           listener: (context, state) {
             state.whenOrNull(
               success: (userData) {
-                context.pushReplacementNamed(Routes.mainScreen, arguments: userData);
+                context.pushReplacementNamed(
+                  Routes.mainScreen,
+                  arguments: userData.toProfile(), 
+                );
               },
               failure: (apiError) {
                 ScaffoldMessenger.of(context).showSnackBar(
