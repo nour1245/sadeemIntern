@@ -10,6 +10,7 @@ import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_
 import 'package:sadeem_tech_intern/features/login_screen/ui/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadeem_tech_intern/features/onboarding/ui/onboarding_screen.dart';
+import 'package:sadeem_tech_intern/features/user_info/data/models/user_profile_model.dart';
 import 'package:sadeem_tech_intern/main_navigation_screen.dart';
 import 'package:sadeem_tech_intern/features/product_details/product_details_screen.dart';
 
@@ -25,7 +26,7 @@ class AppRouter {
               ),
         );
       case Routes.mainScreen:
-        final userData = settings.arguments as UserLoginResponseModel;
+        final userData = settings.arguments as UserProfile;
         return MaterialPageRoute(
           builder: (_) => MainNavigationScreen(userData: userData),
         );

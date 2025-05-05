@@ -8,14 +8,14 @@ import 'package:sadeem_tech_intern/features/cart_page/ui/cart_page.dart';
 import 'package:sadeem_tech_intern/features/cart_page/controller/cubit/cart_cubit.dart';
 import 'package:sadeem_tech_intern/features/home_screen/controller/cubit/home_cubit.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/home_screen.dart';
-import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/search_page/controller/cubit/search_product_cubit.dart';
 import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info_cubit.dart';
+import 'package:sadeem_tech_intern/features/user_info/data/models/user_profile_model.dart';
 import 'package:sadeem_tech_intern/features/user_info/user_info_page.dart';
 import 'package:sadeem_tech_intern/features/search_page/search_page.dart';
 
 class MainNavigationScreen extends StatefulWidget {
-  final UserLoginResponseModel userData;
+  final UserProfile  userData;
   const MainNavigationScreen({super.key, required this.userData});
 
   @override
