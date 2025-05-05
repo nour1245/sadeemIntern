@@ -6,9 +6,15 @@ import 'package:sadeem_tech_intern/core/widgets/custom_text_form_field.dart';
 import 'package:sadeem_tech_intern/features/login_screen/controller/cubit/login_cubit.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
 
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -27,8 +33,18 @@ class LoginForm extends StatelessWidget {
             hintText: S.of(context).Password,
             prefixIcon: Icons.lock,
             keyboardType: TextInputType.text,
-            obscureText: true,
-            suffixIcon: Icons.remove_red_eye_outlined,
+            obscureText: !isVisible,
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  isVisible = !isVisible;
+                });
+              },
+              icon: Icon(
+                isVisible ? Icons.visibility : Icons.visibility_off,
+                color: Colors.grey,
+              ),
+            ),
           ),
           SizedBox(height: 5.h),
           Align(
