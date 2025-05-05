@@ -15,40 +15,47 @@ class SplashDecider extends StatelessWidget {
   Future<Widget> _determineStartScreen() async {
     final prefs = await SharedPreferences.getInstance();
     final hasSeenOnboarding = prefs.getBool('onboarding_seen') ?? false;
-    final token = await SecureStorageService.getToken();
-    final userId = await SecureStorageService.getUserId();
 
-    if (!hasSeenOnboarding) {
-      return const OnboardingScreen();
-    }
+    if (!hasSeenOnboarding) return const OnboardingScreen();
 
-    // If token or userId is invalid, clear them and go to login
-    if (token == null || token.isEmpty || userId == null) {
-      await SecureStorageService.clear(); // Clear stale data
-      return BlocProvider(
-        create: (context) => getIt<LoginCubit>(),
-        child: const LoginScreen(),
-      );
+    final accessToken = await SecureStorageService.getToken();
+    final refreshToken = await SecureStorageService.getRefreshToken();
+
+    if (accessToken == null || refreshToken == null) {
+      await SecureStorageService.clear();
+      return _loginScreen();
     }
 
     try {
-      final userResult = await getIt<LoginRepo>().getUserById(userId);
+      final userResult = await getIt<LoginRepo>().getCurrentUser();
       return userResult.when(
         success: (user) => MainNavigationScreen(userData: user),
-        failure: (_) {
-          SecureStorageService.clear();
-          return BlocProvider(
-            create: (context) => getIt<LoginCubit>(),
-            child: const LoginScreen(),
-          );
-        },
+        failure: (error) => _handleTokenRefresh(refreshToken),
       );
     } catch (e) {
-      return BlocProvider(
-        create: (context) => getIt<LoginCubit>(),
-        child: const LoginScreen(),
-      );
+      return _loginScreen();
     }
+  }
+
+  Widget _loginScreen() => BlocProvider(
+    create: (context) => getIt<LoginCubit>(),
+    child: const LoginScreen(),
+  );
+
+  Future<Widget> _handleTokenRefresh(String refreshToken) async {
+    final refreshResult = await getIt<LoginRepo>().refreshToken(refreshToken);
+    return refreshResult.when(
+      success: (newTokens) async {
+        await SecureStorageService.saveToken(newTokens.accessToken);
+        await SecureStorageService.saveRefreshToken(newTokens.refreshToken);
+        final userResult = await getIt<LoginRepo>().getCurrentUser();
+        return userResult.when(
+          success: (user) => MainNavigationScreen(userData: user),
+          failure: (_) => _loginScreen(),
+        );
+      },
+      failure: (_) => _loginScreen(),
+    );
   }
 
   @override

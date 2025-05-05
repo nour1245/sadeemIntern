@@ -23,6 +23,7 @@ class LoginCubit extends Cubit<LoginState> {
     response.when(
       success: (data) async {
         await SecureStorageService.saveToken(data.accessToken);
+        await SecureStorageService.saveRefreshToken(data.refreshToken);
         await SecureStorageService.saveUserId(data.id);
         emit(LoginState.success(data));
       },

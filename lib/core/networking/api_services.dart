@@ -8,6 +8,7 @@ import 'package:sadeem_tech_intern/features/home_screen/data/models/products_res
 import 'package:sadeem_tech_intern/features/login_screen/data/models/login_request_body.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/user_info/data/models/user_info_model.dart';
+import 'package:sadeem_tech_intern/features/user_info/data/models/user_profile_model.dart';
 
 part 'api_services.g.dart';
 
@@ -63,4 +64,12 @@ abstract class ApiServics {
 
   @GET(ApiConstants.getUserById)
   Future<UserLoginResponseModel> getUserById(@Path('id') int id);
+
+  @GET(ApiConstants.authMe)
+  Future<UserProfile> getCurrentUser();
+  
+  @POST(ApiConstants.refreshToken)
+  Future<UserLoginResponseModel> refreshToken(
+    @Body() Map<String, dynamic> body,
+  );
 }

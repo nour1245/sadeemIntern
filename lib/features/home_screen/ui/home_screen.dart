@@ -13,10 +13,11 @@ import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/home_page_cat
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_banner.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_grid_item.dart';
 import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
+import 'package:sadeem_tech_intern/features/user_info/data/models/user_profile_model.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
-  final UserLoginResponseModel userData;
+  final UserProfile userData;
   const HomeScreen({super.key, required this.userData});
 
   @override
@@ -71,7 +72,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Row pageBar(UserLoginResponseModel userData) {
+  Row pageBar(UserProfile userData) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
