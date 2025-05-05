@@ -1,6 +1,7 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadeem_tech_intern/core/di/dependancy.dart';
 import 'package:sadeem_tech_intern/core/themeing/colors.dart';
@@ -15,7 +16,7 @@ import 'package:sadeem_tech_intern/features/user_info/user_info_page.dart';
 import 'package:sadeem_tech_intern/features/search_page/search_page.dart';
 
 class MainNavigationScreen extends StatefulWidget {
-  final UserProfile  userData;
+  final UserProfile userData;
   const MainNavigationScreen({super.key, required this.userData});
 
   @override
@@ -52,7 +53,13 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope (
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.white, // or any color you want
+        statusBarIconBrightness: Brightness.dark, // for dark icons
+      ),
+    );
+    return PopScope(
       canPop: false,
       child: SafeArea(
         child: Scaffold(
@@ -65,12 +72,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 child: Icon(Icons.home_outlined),
                 label: 'Home',
               ),
-              CurvedNavigationBarItem(child: Icon(Icons.search), label: 'Search'),
+              CurvedNavigationBarItem(
+                child: Icon(Icons.search),
+                label: 'Search',
+              ),
               CurvedNavigationBarItem(
                 child: Icon(Icons.shopping_cart_sharp),
                 label: 'Cart',
               ),
-              CurvedNavigationBarItem(child: Icon(Icons.person_2_outlined), label: 'User'),
+              CurvedNavigationBarItem(
+                child: Icon(Icons.person_2_outlined),
+                label: 'User',
+              ),
             ],
             onTap: (index) {
               setState(() {

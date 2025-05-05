@@ -14,7 +14,7 @@ class CustomTextFormField extends StatelessWidget {
   });
   final String hintText;
   final IconData prefixIcon;
-  final IconData? suffixIcon;
+  final Widget? suffixIcon;
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
   final TextInputType keyboardType;
@@ -28,7 +28,7 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       decoration: InputDecoration(
-        suffixIcon: Icon(suffixIcon, color: Colors.grey),
+        suffixIcon: suffixIcon,
         prefixIcon: Icon(prefixIcon, color: Colors.grey),
         hintText: hintText,
         hintStyle: const TextStyle(color: Colors.grey),
