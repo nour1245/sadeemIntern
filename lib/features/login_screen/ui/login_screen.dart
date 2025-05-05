@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
               success: (userData) {
                 context.pushReplacementNamed(
                   Routes.mainScreen,
-                  arguments: userData.toProfile(), 
+                  arguments: userData.toProfile(),
                 );
               },
               failure: (apiError) {
@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                   ),
                   SizedBox(height: 40.h),
-                  creatAccountText(),
+                  creatAccountText(context),
                 ],
               ),
             );
@@ -71,14 +71,14 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Align creatAccountText() {
+  Align creatAccountText(BuildContext context) {
     return Align(
       alignment: Alignment.center,
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
-              text: "Create An Account Now ! ",
+              text: S.of(context).CreateAccount,
               style: AppTextStyle.normalTextStyle().copyWith(fontSize: 14),
             ),
             TextSpan(

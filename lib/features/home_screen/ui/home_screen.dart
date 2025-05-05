@@ -12,7 +12,6 @@ import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/home_page_ban
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/home_page_categories_list.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_banner.dart';
 import 'package:sadeem_tech_intern/features/home_screen/ui/widgets/shimmer_grid_item.dart';
-import 'package:sadeem_tech_intern/features/login_screen/data/models/user_login_response_model.dart';
 import 'package:sadeem_tech_intern/features/user_info/data/models/user_profile_model.dart';
 import 'package:sadeem_tech_intern/generated/l10n.dart';
 
@@ -60,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 10.h),
                   homePageBanner(),
                   SizedBox(height: 5.h),
-                  ...bestSellerSection(bestSellers),
+                  ...bestSellerSection(context,bestSellers),
                 ],
               );
             } else {
@@ -98,15 +97,15 @@ class HomeScreen extends StatelessWidget {
       ),
       HomePageCategoriesList(
         categoriesList: Hive.box(
-          'categories',
+          S.of(context).Categories,
         ).get('list', defaultValue: <CategoriesFetchModel>[]),
       ),
     ];
   }
 
-  bestSellerSection(List<Product> bestSellers) {
+  bestSellerSection(BuildContext context,List<Product> bestSellers) {
     return [
-      Text("Best Seller", style: AppTextStyle.semiBoldTextStyle()),
+      Text(S.of(context).BestSeller, style: AppTextStyle.semiBoldTextStyle()),
       BestSellerGridview(bestseller: bestSellers),
     ];
   }

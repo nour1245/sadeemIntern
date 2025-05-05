@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadeem_tech_intern/core/themeing/colors.dart';
 import 'package:sadeem_tech_intern/core/routing/routes.dart';
+import 'package:sadeem_tech_intern/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -128,7 +129,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                     ),
-                    child: const Text("Login"),
+                    child: Text(S.of(context).Login),
                   ),
                 ),
               ),

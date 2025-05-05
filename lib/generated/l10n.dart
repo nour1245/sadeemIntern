@@ -109,6 +109,41 @@ class S {
   String get Categories {
     return Intl.message('Categories', name: 'Categories', desc: '', args: []);
   }
+
+  /// `Home`
+  String get Home {
+    return Intl.message('Home', name: 'Home', desc: '', args: []);
+  }
+
+  /// `Search`
+  String get Search {
+    return Intl.message('Search', name: 'Search', desc: '', args: []);
+  }
+
+  /// `Cart`
+  String get Cart {
+    return Intl.message('Cart', name: 'Cart', desc: '', args: []);
+  }
+
+  /// `User`
+  String get User {
+    return Intl.message('User', name: 'User', desc: '', args: []);
+  }
+
+  /// `Best Seller`
+  String get BestSeller {
+    return Intl.message('Best Seller', name: 'BestSeller', desc: '', args: []);
+  }
+
+  /// `Create An Account Now ! `
+  String get CreateAccount {
+    return Intl.message(
+      'Create An Account Now ! ',
+      name: 'CreateAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

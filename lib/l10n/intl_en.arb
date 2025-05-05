@@ -1,10 +1,17 @@
 {
-    "WelcomeBack":"Welcome\nBack!",
-    "ForgotPassword":"Forgot Password?",
-    "UserName":"Username",
-    "Password":"Password",
-    "Login":"Login",
-    "CreateAnAccount":"Create An Account",
-    "SignUp":"Sign Up",
-    "Categories":"Categories"
+    "WelcomeBack": "Welcome\nBack!",
+    "ForgotPassword": "Forgot Password?",
+    "UserName": "Username",
+    "Password": "Password",
+    "Login": "Login",
+    "CreateAnAccount": "Create An Account",
+    "SignUp": "Sign Up",
+    "Categories": "Categories",
+    "Home": "Home",
+    "Search": "Search",
+    "Cart": "Cart",
+    "User": "User",
+    "BestSeller": "Best Seller",
+    "CreateAccount":"Create An Account Now ! "
+    
 }

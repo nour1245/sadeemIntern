@@ -14,6 +14,7 @@ import 'package:sadeem_tech_intern/features/user_info/controller/cubit/user_info
 import 'package:sadeem_tech_intern/features/user_info/data/models/user_profile_model.dart';
 import 'package:sadeem_tech_intern/features/user_info/user_info_page.dart';
 import 'package:sadeem_tech_intern/features/search_page/search_page.dart';
+import 'package:sadeem_tech_intern/generated/l10n.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   final UserProfile userData;
@@ -70,19 +71,19 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             items: [
               CurvedNavigationBarItem(
                 child: Icon(Icons.home_outlined),
-                label: 'Home',
+                label: S.of(context).Home,
               ),
               CurvedNavigationBarItem(
                 child: Icon(Icons.search),
-                label: 'Search',
+                label: S.of(context).Search,
               ),
               CurvedNavigationBarItem(
                 child: Icon(Icons.shopping_cart_sharp),
-                label: 'Cart',
+                label: S.of(context).Cart,
               ),
               CurvedNavigationBarItem(
                 child: Icon(Icons.person_2_outlined),
-                label: 'User',
+                label: S.of(context).User,
               ),
             ],
             onTap: (index) {
